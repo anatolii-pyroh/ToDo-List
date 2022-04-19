@@ -1,15 +1,15 @@
-import './App.css';
-import React from "react"
+import React from 'react';
+import TodoNew from './components/TodoNew';
+import TodoList from './components/TodoList';
 
-function App() {
-  return (
-    <div className="App">
-      <div style={{display: "flex"}}>
-        <button>Пополнить счёт</button>
-        <button>Снять со счёта</button>
-      </div>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<div className="app">
+			<h1 className="app-title">Todos (counter)</h1>
+			<TodoNew/>
+			<TodoList/>
+		</div>
+	);
+};
 
 export default App;
