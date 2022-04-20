@@ -1,4 +1,17 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
+#root{
+  display: flex;
+  justify-content: center;
+}
+.App{
+  margin-top: 100px;
+  width: 700px;
+}
+
+h3{
+  text-align: center;
+}

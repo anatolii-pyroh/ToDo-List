@@ -1,15 +1,27 @@
-import React from 'react';
-import TodoNew from './components/TodoNew';
-import TodoList from './components/TodoList';
+import React from "react";
+import TodoNew from "./components/TodoNew";
+import TodoList from "./components/TodoList";
+import "./App.css";
+import { useSelector } from "react-redux";
+import Card from "./UI/Card";
 
 const App = () => {
-	return (
-		<div className="app">
-			<h1 className="app-title">Todos (counter)</h1>
-			<TodoNew/>
-			<TodoList/>
-		</div>
-	);
+  let counter = useSelector((state) => {
+    if (state.tasks.todos === undefined) {
+      return;
+    } else {
+      return state.tasks.todos.length;
+    }
+  });
+  return (
+    <div className='App'>
+      <Card style={{margin: "10px"}}>
+        <h3>Todos {counter}</h3>
+        <TodoNew />
+        <TodoList />
+      </Card>
+    </div>
+  );
 };
 
 export default App;

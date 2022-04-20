@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteTodo } from "../store/toolkitSlice";
+import { deleteTodo, editTodo } from "../store/toolkitSlice";
 
 const TodoItem = (props) => {
   const dispatch = useDispatch();
@@ -12,22 +12,51 @@ const TodoItem = (props) => {
       })
     );
   };
+  const changeTodo = (taskName) => {
+    if (!taskName) {
+      return;
+    } else {
+      dispatch(
+        editTodo({
+          name: taskName,
+          id: props.id,
+        })
+      );
+    }
+  };
 
   return (
-    <li className='task-item'>
-      <div>{props.title}</div>
-      <div>
-        <button
-          className='remove-task-button'
-          onClick={() => {
-            removeTodo();
-          }}
-        >
-          Delete
-        </button>
-      </div>
-      <div>
-        <button className='remove-task-button'>Edit</button>
+    <li className='list-group-item'>
+      <div className='input-group justify-content-between'>
+        <div className='form-check mt-2'>
+          <input
+            className='form-check-input'
+            type='checkbox'
+            value=''
+            id='flexCheckDefault'
+          />
+          <label className='form-check-label' for='flexCheckDefault'>
+            {props.title}
+          </label>
+        </div>
+        <div>
+          <button
+            className='btn btn-outline-success'
+            onClick={() => {
+              changeTodo(prompt());
+            }}
+          >
+            Edit
+          </button>
+          <button
+            className='btn btn-outline-danger'
+            onClick={() => {
+              removeTodo();
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </li>
   );
