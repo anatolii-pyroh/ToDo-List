@@ -15,7 +15,7 @@ const App = () => {
   });
   return (
     <div className='App'>
-      <Card style={{margin: "10px"}}>
+      <Card>
         <h3>Todos {counter}</h3>
         <TodoNew />
         <TodoList />
